@@ -1,29 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Linder_Assets — Contact</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Linder Assets — Portfolio & Contact</title>
+  <meta name="description" content="Linder Assets — Unity tools, save systems, and technical assets. Contact for support, collaboration, or licensing." />
   <style>
-    body {
-      font-family: sans-serif;
-      background-color: #0b1c2c;
-      color: #ffffff;
-      text-align: center;
-      padding: 2rem;
+    :root{
+      --bg:#071725;
+      --panel:#0b2a3b;
+      --muted:#9fb6c6;
+      --accent:#00bcd4;
+      --card:#0f3848;
+      --maxw:880px;
+      --radius:10px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
-    a {
-      color: #00bcd4;
-      text-decoration: none;
+    html,body{height:100%}
+    body{
+      margin:0;
+      min-height:100%;
+      background:linear-gradient(180deg,var(--bg),#05202b);
+      color:#e6f6fb;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding:24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .wrap{
+      width:100%;
+      max-width:var(--maxw);
+      background:linear-gradient(0deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      box-shadow:0 8px 30px rgba(2,12,20,0.6);
+      padding:28px;
+      box-sizing:border-box;
+    }
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo{
+      width:56px;
+      height:56px;
+      flex:0 0 56px;
+      border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),#6feaf0);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#042023;
+      font-weight:700;
+      font-size:18px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.35), inset 0 -6px 18px rgba(255,255,255,0.03);
+    }
+    h1{font-size:20px;margin:0}
+    p.lead{margin:6px 0 0;color:var(--muted);font-size:13px}
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      margin-left:16px;
+      font-size:14px;
+    }
+    main{display:grid;grid-template-columns:1fr;gap:20px}
+    .card{
+      background:var(--card);
+      border-radius:8px;
+      padding:18px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+    h2{margin:0 0 8px 0;font-size:16px}
+    .about p{color:var(--muted);margin:6px 0}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:12px;
+    }
+    .project{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.03));
+      padding:12px;
+      border-radius:8px;
+      color:#dff6fa;
+      font-size:13px;
+    }
+    .project strong{display:block;margin-bottom:6px}
+    .contact-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .contact-info{color:var(--muted);font-size:14px}
+    .btn{
+      display:inline-block;
+      background:var(--accent);
+      color:#002b30;
+      padding:10px 14px;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow:0 6px 18px rgba(0,188,212,0.12);
+    }
+    form.contact-form{
+      display:grid;
+      gap:10px;
+      margin-top:8px;
+    }
+    label{font-size:13px;color:var(--muted)}
+    input[type="text"],input[type="email"],textarea{
+      width:100%;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.04);
+      background:rgba(255,255,255,0.02);
+      color:#e6f6fb;
+      font-size:14px;
+      box-sizing:border-box;
+      resize:vertical;
+    }
+    textarea{min-height:100px}
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      color:var(--muted);
+      font-size:13px;
+      margin-top:16px;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    footer a{color:var(--muted);text-decoration:none}
+    .note{font-size:12px;color:#98c0c9}
+    @media (min-width:760px){
+      main{grid-template-columns:2fr 1fr;align-items:start}
     }
   </style>
 </head>
 <body>
-  <h1>Linder_Assets</h1>
-  <p><em>ToolsThatThinkLikeYou();</em></p>
-  <h2>Contact</h2>
-  <p>For support, collaboration, or feedback:</p>
-  <p>Email: <a href="mailto:Linder_Assets@outlook.com">Linder_Assets@outlook.com</a></p>
-  <p>GitHub: <a href="https://github.com/ToxicExile">github.com/ToxicExile</a></p>
-  <p>Gumroad: <a href="https://linderassets.gumroad.com/">https://linderassets.gumroad.com/</a></p>
+  <div class="wrap" role="main">
+    <header>
+      <div class="brand" aria-hidden="false">
+        <div class="logo">LA</div>
+        <div>
+          <h1>Linder Assets</h1>
+          <p class="lead">ToolsThatThinkLikeYou — Unity tools, save systems, editor utilities</p>
+        </div>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="about" class="card about" aria-labelledby="about-title">
+        <h2 id="about-title">About</h2>
+        <p>
+          I build technical Unity assets with an emphasis on reliability, platform compatibility, and clear documentation. Primary
+          areas of work include save systems, cloud sync integrations (UGS/Firebase), console authentication adapters, and editor tooling.
+        </p>
+        <p>
+          Relevant experience: systems design, plugin development, cross-platform testing, and packaging assets for distribution.
+          All releases include clear offline documentation and integration examples.
+        </p>
+
+        <h2 style="margin-top:14px">Highlights</h2>
+        <div class="grid" aria-hidden="false">
+          <div class="project">
+            <strong>CrossSave Pro</strong>
+            Prefab-free slot-based save system with AES encryption, UGS/Firebase cloud sync, console-ready auth adapters.
+          </div>
+          <div class="project">
+            <strong>SaveSystem Debug UI</strong>
+            Optional debug UI for runtime testing: save/load, slot switching, and mock cloud simulation.
+          </div>
+          <div class="project">
+            <strong>Editor Utilities</strong>
+            Tools for packaging, define-symbol management, and automated documentation export.
+          </div>
+        </div>
+      </section>
+
+      <aside id="contact" class="card" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
+
+        <div class="contact-row" style="margin-bottom:10px">
+          <div class="contact-info">
+            Email: <a href="mailto:linder_assets@outlook.com" style="color:var(--accent);text-decoration:underline;">linder_assets@outlook.com</a>
+            <div style="margin-top:6px" class="note">Prefer sending a short message first — include project name and platform (Windows, macOS, console).</div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px">
+          <form class="contact-form" id="contactForm" onsubmit="return handleForm(event)" novalidate>
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" required placeholder="Alex Example" />
+
+            <label for="email">Your email</label>
+            <input id="email" name="email" type="email" required placeholder="you@example.com" />
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required placeholder="Short summary, platform, and any files to share (link to file storage)"></textarea>
+
+            <button type="submit" class="btn" aria-label="Send message">Send message</button>
+
+            <div id="formStatus" class="note" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <hr style="margin:14px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
+
+        <div>
+          <h2 style="margin:6px 0 8px 0">Public Profiles</h2>
+          <p class="contact-info">
+            GitHub: <a href="https://github.com/ToxicExile" rel="noopener noreferrer" target="_blank">github.com/ToxicExile</a>
+          </p>
+          <p class="note">
+            Marketplace links are not listed here. If you need purchasing or distribution details, contact via email and include the asset name.
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <div class="foot">
+      <div>© 2025 Linder Assets</div>
+      <div>
+        <a href="#privacy" onclick="document.getElementById('privacy').scrollIntoView({behavior:'smooth'});return false">Privacy</a>
+        <span style="margin:0 8px;color:rgba(255,255,255,0.04)">•</span>
+        <a href="#terms" onclick="document.getElementById('terms').scrollIntoView({behavior:'smooth'});return false">Terms</a>
+      </div>
+    </div>
+
+    <section id="privacy" style="margin-top:16px" class="note">
+      <h2 style="margin:8px 0 6px 0">Privacy</h2>
+      <p style="margin:0 0 8px 0;color:var(--muted)">
+        Messages sent via the contact form open an email draft in your mail client (mailto) or can be processed by server-side handlers if configured. No personal data is stored on this page.
+      </p>
+    </section>
+
+    <section id="terms" style="margin-top:12px" class="note">
+      <h2 style="margin:8px 0 6px 0">Terms</h2>
+      <p style="margin:0;color:var(--muted)">
+        This site provides portfolio and contact information for Linder Assets. Direct links to third-party marketplaces are intentionally omitted from public pages.
+      </p>
+    </section>
+  </div>
+
+  <script>
+    // Simple client-side mailto fallback. This keeps the site static while providing a working contact flow.
+    function handleForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const status = document.getElementById('formStatus');
+
+      if(!name || !email || !message){
+        status.textContent = 'Please complete all fields before sending.';
+        return false;
+      }
+
+      const subject = encodeURIComponent('Contact from website: ' + name);
+      const body = encodeURIComponent(
+        'Name: ' + name + '\\n' +
+        'Email: ' + email + '\\n\\n' +
+        message
+      );
+
+      // Use the primary support email (visible above). This opens the user's mail client.
+      const mailto = 'mailto:linder_assets@outlook.com' + '?subject=' + subject + '&body=' + body;
+      // Try opening mail client
+      window.location.href = mailto;
+
+      status.textContent = 'Your mail client should open. If it does not, send an email to linder_assets@outlook.com.';
+      return false;
+    }
+
+    // Minor accessibility: focus outline restore for keyboard users
+    (function(){
+      const body = document.body;
+      function handleMouse(){ body.classList.add('using-mouse'); }
+      function handleKey(e){ if(e.key==='Tab') body.classList.remove('using-mouse'); }
+      window.addEventListener('mousedown', handleMouse);
+      window.addEventListener('keydown', handleKey);
+    })();
+  </script>
 </body>
 </html>
+```[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/nataliiafrank/portfolio2020/tree/377737ad0a13a5a9113e242e026a5c90a3b59b3a/js%2Fcontact-form.js?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "1")
