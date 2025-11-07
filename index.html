@@ -14,68 +14,221 @@
       --muted: #9fb6c6;
       font-family: Inter, system-ui, sans-serif;
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       background-color: var(--bg);
       color: var(--text);
-      padding: 24px;
+      padding: 0;
+      font-family: var(--font);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(11, 28, 44, 0.8);
+      backdrop-filter: blur(8px);
       display: flex;
       justify-content: center;
+      padding: 12px 0;
+      z-index: 1000;
     }
-    .container {
+
+    nav {
+      display: flex;
+      gap: 24px;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    section {
       max-width: 880px;
-      width: 100%;
+      margin: 0 auto;
+      padding: 100px 24px 40px 24px;
       text-align: center;
     }
+
     .logo img {
       max-width: 160px;
       height: auto;
       border-radius: 12px;
       margin-bottom: 12px;
     }
+
     h1 {
       font-size: 2rem;
       margin: 0;
     }
+
     h2 {
-      font-size: 1.2rem;
-      margin-top: 24px;
+      font-size: 1.4rem;
+      margin-top: 32px;
       color: var(--highlight);
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
+
     p {
       font-size: 1rem;
       color: var(--muted);
       margin: 8px 0;
+      line-height: 1.6;
     }
+
     a {
       color: var(--accent);
       text-decoration: none;
+      transition: color 0.2s ease;
     }
+
+    a:hover {
+      color: var(--highlight);
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .skill-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 16px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .skill-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .skill-title {
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
     .footer {
-      margin-top: 32px;
       font-size: 0.9rem;
       color: var(--muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 16px 24px;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        gap: 16px;
+        font-size: 0.9rem;
+      }
+
+      section {
+        padding: 90px 16px 32px 16px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      h2 {
+        font-size: 1.1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <header>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
     <div class="logo">
       <img src="logo.png" alt="Linder Assets logo" />
     </div>
     <h1>Linder Assets</h1>
     <p><em>ToolsThatThinkLikeYou();</em></p>
-
     <h2>About</h2>
     <p>I build Unity tools focused on reliability, modularity, and clear documentation. Projects include save systems, cloud sync integrations, and editor utilities.</p>
+  </section>
 
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill-card">
+        <div class="skill-title">Unity & C#</div>
+        <p>Designing modular systems, custom inspectors, and editor tooling.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">Game Systems</div>
+        <p>Save/load frameworks, AI behaviours, physics simulations, and state management.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">Performance & Optimisation</div>
+        <p>Profiling, memory management, and scalable architecture design.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">Graphics & Shaders</div>
+        <p>Shader Graph, URP/HDRP integration, and lighting optimisation.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">Version Control</div>
+        <p>GitHub collaboration, project maintenance, and release management.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:linder_assets@outlook.com">linder_assets@outlook.com</a></p>
     <p>GitHub: <a href="https://github.com/ToxicExile" target="_blank">github.com/ToxicExile</a></p>
+  </section>
 
-    <div class="footer">
-      © 2025 Linder Assets — Portfolio site for Unity tools and technical assets. Marketplace links are excluded per publisher guidelines.
-    </div>
+  <div class="footer">
+    © 2025 Linder Assets — Portfolio site for Unity tools and technical assets. Marketplace links are excluded per publisher guidelines.
   </div>
+
+  <script>
+    // Fade-in animation on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.skill-card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
 </body>
 </html>
